@@ -1,0 +1,1 @@
+# mirador-rect-selector
