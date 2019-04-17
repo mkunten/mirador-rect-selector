@@ -3,36 +3,42 @@
 ## usage
 
 ```html
-<script type="application/javascript" src="path/to/mirador.js></script>
-<!-- optional (*)
-  <script type="application/javascript" src="path/to/viewFromUrl.js></script>
+<link rel="stylesheet" type="text/css" href="path/to/mirador-rect-selector.js" />
+<script type="application/javascript" src="path/to/mirador.js"></script>
+<!-- optional †
+  <script type="application/javascript" src="path/to/viewFromUrl.js"></script>
 -->
-<script type="application/javascript" src="path/to/mirador-rect-selector.js></script>
+<script type="application/javascript" src="path/to/mirador-rect-selector.js"></script>
 <scipt type="application/javascript">
   const myMiradorInstance = new Mirador({
-    // Mirador config
-    /* ... */
 
-    // rect-selector config
+    /* other Mirador config */
+
+    // rect-selector config (below default)
     rectSelector: {
-      margin: 300,     // offset in zooming
-      highlight: 'on', // regards anything but 'off' as 'on'
-      zoom: 'on',      // regards anything but 'off' as 'on'
+      annoPosition: 'center', // center, upper, lower, left, right
+      annoVertical: false,    // makes annotation vertical if true
+      zoomMargin: 300,        // offset in zooming
+      zoom: 'on',             // regards anything but 'off' as 'on'
     },
   });
 </script>
 ```
 
-(*) when window is loaded, any canvas must have been loaded in any way.  
+† from the beginning some canvas must have been loaded in any way.
 
 ## url parameters
 
 label | desc
  :--- | :---
-`xywh` | *x,y,width,height*
-`chars` | annotaion characters shown when hovered
-`highlight` | see above (rect-selector config)
-`zoom` | see above (rect-selector config)
+`canvas` | `<canvas id>`
+`xywh` | `<x>,<y>,<width>,<height>`
+`chars` | `<annotaion>` (optional)
+`zoom` | see above (rect-selector config) (optional)
+
+## styles
+
+see `mirador-rect-selector.css`
 
 ## demo
 
@@ -41,13 +47,16 @@ label | desc
 
 label | desc
  :--- | :---
+`view` | `ImageView`; see [ViewFromUrl]
+`manifest` | `https://www.dl.ndl.go.jp/api/iiif/2532375/manifest.json`; see [ViewFromUrl]
+`canvas` | `https://www.dl.ndl.go.jp/api/iiif/2532375/canvas/4`; see also [ViewFromUrl] 
 `xywh` | `3190,1575,250,430`
 `chars` | `かひ`
-`view` | `ImageView`; see [ViewFromUrl]
-`manifest` | https://www.dl.ndl.go.jp/api/iiif/2532375/manifest.json; see [ViewFromUrl]
-`canvas` | https://www.dl.ndl.go.jp/api/iiif/2532375/canvas/4; see [ViewFromUrl] 
 
-\* some other plugins are also installed.
-
+\* demo applies some other plugins, see https://mkunten.github.io/sandbox/
 
 [ViewFromUrl]: https://github.com/dbmdz/mirador-plugins/tree/master/ViewFromUrl
+
+## License
+
+MIT
