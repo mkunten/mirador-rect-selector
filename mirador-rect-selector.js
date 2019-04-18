@@ -70,7 +70,7 @@
 
     parseQueryString();
     if(_data.canvas === this.canvasID
-      && _data.xywh.match(/^(\d+),(\d+),(\d+),(\d+)$/)) {
+      && _data.xywh && _data.xywh.match(/^(\d+),(\d+),(\d+),(\d+)$/)) {
       const xywh = _data.xywh.split(',').map(v => parseInt(v, 10));
       _data.bounds = new (Function.prototype.bind
         .apply(OpenSeadragon.Rect, [null].concat(xywh)));
